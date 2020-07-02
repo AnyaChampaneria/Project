@@ -51,4 +51,6 @@ img[0:150, 0:300] = [0,255,0]
 plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
 plt.title('Updated')
 
-# We can split the our image into 3 three channels (b, g, r)
+#cv2.imshow("flower", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
