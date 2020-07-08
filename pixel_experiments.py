@@ -9,8 +9,7 @@ Created on Wed Jul  1 17:04:26 2020
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-
-img=cv2.imread("flower.jpg",1)
+img=cv2.imread("tree.png",1)
 
 
 b, g, r = cv2.split(img)

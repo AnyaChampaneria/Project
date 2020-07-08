@@ -9,7 +9,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-img=cv2.imread("flower.jpg",1)
+img=cv2.imread("tree.png",1)
 #cv2.imwrite("flowercopy.jpg", img)
 #cv2.imshow('Flower Image',img)
 #plt.imshow(img)
