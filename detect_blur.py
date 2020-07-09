@@ -28,14 +28,14 @@ args = vars(ap.parse_args())
 
 # loop over the input images
 #for imagePath in paths.list_images(args["images"]):
-image = cv2.imread("SC_example.jpg")
+image = cv2.imread("images/yellowsq_bluebg.jpg")
 b, g, r = cv2.split(image)
 img2 = cv2.merge([r, g, b])
-#plt.imshow(img2)
-RIO = img2[120:150, 300:350]
-gray = cv2.cvtColor(RIO, cv2.COLOR_BGR2GRAY)
-fm = variance_of_laplacian(RIO)
-#text = "Not Blurry"
+plt.imshow(img2)
+RIO = img2[100:500, 200:850]
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+fm = variance_of_laplacian(gray)
+text = "Not Blurry"
 
 # if the focus measure is less than the supplied threshold,
 	# then the image should be considered "blurry"

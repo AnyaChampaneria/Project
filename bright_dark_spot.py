@@ -16,7 +16,7 @@ ap.add_argument("-r", "--radius", type = int,
 	help = "radius of Gaussian blur; must be odd")
 args = vars(ap.parse_args())
 # load the image and convert it to grayscale
-image = cv2.imread("tree.png")
+image = cv2.imread("images/tree.png")
 #orig = image.copy()
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 # perform a naive attempt to find the (x, y) coordinates of
