@@ -18,12 +18,16 @@ img = cv.imread("images/flower.jpg")
 #plt.show()
 
 imgray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-ret, thresh = cv.threshold(imgray, 127, 255, 0)
+ret, thresh = cv.threshold(imgray, 75, 255, 0)
 contours, hierarchy = cv.findContours(thresh, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_NONE)
 
 #To draw all the contours in an image:
 #cnt = contours[4]
 #cv.drawContours(img, [cnt], 0, (0,255,0), 3)
+#for( int i = 0; i< contours.size(); i++ )
+#cv.drawContours(thresh, contours,i, (0,255,0),0, 8, hierarchy ); 
+     
+     
 cv.drawContours(img, contours,-1, (0,255,0), 3)
 cv.imshow('draw contours',img)
 cv.waitKey(0)
@@ -34,3 +38,5 @@ print(cv.CHAIN_APPROX_NONE)
 #To draw an individual contour, say 4th contour:
 #cv.drawContours(img, contours, 3, (0,255,0), 3)
 #But most of the time, below method will be useful:
+
+
