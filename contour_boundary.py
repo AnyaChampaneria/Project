@@ -7,14 +7,15 @@ Created on Mon Jul 13 15:47:42 2020
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+import imutils
 
-image = cv2.pyrDown(cv2.imread("images/fish.jpg", cv2.IMREAD_UNCHANGED))
+image = cv2.pyrDown(cv2.imread("images/flower.jpg", cv2.IMREAD_UNCHANGED))
 #img=image[100:275, 150:300]
 #img =  image[40:100, 150:275]
 #img2 = img.copy()
 img=image
 #plt.imshow(img)
-
+#img = imutils.resize(image, width=500)
 ret, thresh = cv2.threshold(cv2.cvtColor(img.copy(), cv2.COLOR_BGR2GRAY) , 127, 255, cv2.THRESH_BINARY)
 contours, hier = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 

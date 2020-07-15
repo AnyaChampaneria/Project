@@ -14,6 +14,8 @@ import cv2
 import matplotlib.pyplot as plt
 import imutils
 
+
+
 def variance_of_laplacian(image):
 	# compute the Laplacian of the image and then return the focus
 	# measure, which is simply the variance of the Laplacian
@@ -30,6 +32,7 @@ def variance_of_laplacian(image):
 # loop over the input images
 #for imagePath in paths.list_images(args["images"]):
 image = cv2.imread("images/fish.jpg")
+#ROI_polygon.draw_roi
 #cv2.imshow("img", image)
 plt.imshow(image)
 #b, g, r = cv2.split(image)
@@ -37,21 +40,27 @@ plt.imshow(image)
 img = imutils.resize(image, width=500)
 
 
-#ROI = img[100:500, 200:850]
-ROI = image[(14, 114), (119, 27), (345, 50), (406, 179), (294, 256), (133, 270), (77, 214), (34, 232), (12, 118)]
+ROI = img[100:500, 200:850]
+#ROI = image[(14, 114), (119, 27), (345, 50), (406, 179), (294, 256), (133, 270), (77, 214), (34, 232), (12, 118)]
 #plt.imshow(ROI)
-gray = cv2.cvtColor(ROI, cv2.COLOR_BGR2GRAY)
-fm = variance_of_laplacian(gray)
-text = "Not Blurry"
+  
+def blur(ROI):
+    #if __name__ == '__blur__':
+        gray = cv2.cvtColor(ROI, cv2.COLOR_BGR2GRAY)
+        fm = variance_of_laplacian(gray)
+        text = "Not Blurry"
+    
+        # if the focus measure is less than the supplied threshold,
+    	# then the image should be considered "blurry"
+        if fm < 100:
+            text = "Blurry"
+        else :
+            text = "Not Blurry"
+    	# show the image
+        cv2.putText(image, "{}: {:.2f}".format(text, fm), (10, 30),
+    	cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 3)
+        cv2.imshow("Image",image)
+        key = cv2.waitKey(0)
 
-# if the focus measure is less than the supplied threshold,
-	# then the image should be considered "blurry"
-if fm < 100:
-		text = "Blurry"
-else :
-		text = "Not Blurry"
-	# show the image
-cv2.putText(image, "{}: {:.2f}".format(text, fm), (10, 30),
-		cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 3)
-cv2.imshow("Image",image)
-key = cv2.waitKey(0)
+#run function  
+#blur(ROI)
