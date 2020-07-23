@@ -45,7 +45,8 @@ ROI = img[100:500, 200:850]
 #plt.imshow(ROI)
   
 def blur(ROI):
-    #if __name__ == '__blur__':
+    if __name__ == '__blur__': 
+        blur()
         gray = cv2.cvtColor(ROI, cv2.COLOR_BGR2GRAY)
         fm = variance_of_laplacian(gray)
         text = "Not Blurry"
@@ -60,7 +61,7 @@ def blur(ROI):
         cv2.putText(image, "{}: {:.2f}".format(text, fm), (10, 30),
     	cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 3)
         cv2.imshow("Image",image)
-        key = cv2.waitKey(0)
+        cv2.waitKey(0)
 
 #run function  
-#blur(ROI)
+blur(ROI)
