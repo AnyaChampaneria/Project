@@ -11,7 +11,7 @@ from PIL import Image, ImageChops
 
 
 #ORIG = './books-edited.jpg'
-ORIG = "images/SC_Jlawsky.jpg"
+ORIG = "images/yellowsq_bluebg.jpg"
 TEMP = 'temp.jpg'
 SCALE = 10
 
