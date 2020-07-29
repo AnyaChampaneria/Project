@@ -11,12 +11,12 @@ from PIL import Image, ImageChops
 
 
 #ORIG = './books-edited.jpg'
-ORIG = "images/yellowsq_bluebg.jpg"
-TEMP = 'temp.jpg'
-SCALE = 10
+ORIG = "images/SC_jlawsky.jpg"
 
 
-def ELA():
+def ELA(ORIG):
+    TEMP = 'temp.jpg'
+    SCALE = 10
     original = Image.open(ORIG)
     original.save(TEMP, quality=90)
     temporary = Image.open(TEMP)
@@ -27,9 +27,10 @@ def ELA():
     for x in range(WIDTH):
         for y in range(HEIGHT):
             d[x, y] = tuple(k * SCALE for k in d[x, y])
-
     diff.show()
 
-if __name__ == '__main__':
-    ELA()
+if __name__ == '__ELA__':
+    ELA(ORIG)
+    
+#ELA(ORIG)
 

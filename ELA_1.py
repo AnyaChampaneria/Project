@@ -5,7 +5,7 @@ Created on Fri Jul 24 16:18:25 2020
 @author: anyaj
 """
 from PIL import Image, ImageChops, ImageEnhance
-import sys, os.path
+#import sys, os.path
 
 filename = "images/SC_Jlawsky.jpg"
 resaved = filename + '.resaved.jpg'
@@ -13,7 +13,7 @@ ela = filename + '.ela.png'
 
 im = Image.open(filename)
 
-im.save(resaved, 'JPEG', quality=80)
+im.save(resaved, 'JPEG', quality=95)
 resaved_im = Image.open(resaved)
 
 ela_im = ImageChops.difference(im, resaved_im)

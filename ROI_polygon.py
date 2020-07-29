@@ -9,14 +9,14 @@ import imutils
 import numpy as np
 import joblib
 
-img = cv2.imread("images/fish.jpg")
+img = 0#cv2.imread("images/fish.jpg")
 pts = [] # for storing points
  
  # :mouse callback function
-def draw_roi(event, x, y, flags, param):
-    #if __name__ == '__draw_roi__':
+def draw_roi(event, x, y, param):
+    #
         img2 = img.copy()
-     
+        param=param
         if event == cv2.EVENT_LBUTTONDOWN: # Left click, select point
             pts.append((x, y))  
      
@@ -44,11 +44,11 @@ def draw_roi(event, x, y, flags, param):
             cv2.imshow("ROI", ROI)
             cv2.waitKey(0)
             cv2.destroyAllWindows()
-            print(ROI)
+            
             
      
         if len(pts) > 0:
-                     # Draw the last point in pts
+                     # Draw the last point in ptss
             cv2.circle(img2, pts[-1], 3, (0, 0, 255), -1)
      
         if len(pts) > 1:
@@ -59,30 +59,34 @@ def draw_roi(event, x, y, flags, param):
      
         cv2.imshow('image', img2)
 
-img = cv2.imread("images/fish.jpg")
-img = imutils.resize(img, width=500)
-cv2.namedWindow('image')
-cv2.setMouseCallback('image', draw_roi)
-print("[INFO] Click the left button: select the point, right click: delete the last selected point, click the middle button: determine the ROI area")
-print("[INFO] Press ‘S’ to determine the selection area and save it")
-print("[INFO] Press ESC to quit")
-while True:
-    key = cv2.waitKey(1) & 0xFF
-    if key == 27:
-        break
-    if key == ord("s"):
-        saved_data = {
-            "ROI": pts
-        }
-        joblib.dump(value=saved_data, filename="config.pkl")
-        print(pts)
-        print("[INFO] ROI coordinates have been saved to local.")
-        break
-cv2.destroyAllWindows()
 
+def roi(img):
+       
+        img = imutils.resize(img, width=500)
+        cv2.namedWindow('image')
+        cv2.setMouseCallback('image', draw_roi)
+        print("[INFO] Click the left button: select the point, right click: delete the last selected point, click the middle button: determine the ROI area")
+        print("[INFO] Press ‘S’ to determine the selection area and save it")
+        print("[INFO] Press ESC to quit")
+        while True:
+            key = cv2.waitKey(1) & 0xFF
+            if key == 27:
+                break
+            if key == ord("s"):
+                saved_data = {
+                    "ROI": pts
+                }
+                joblib.dump(value=saved_data, filename="config.pkl")
+                print(pts)
+                print("[INFO] ROI coordinates have been saved to local.")
+                break
+        cv2.destroyAllWindows()
 
+if __name__ == '__roi__':
+    roi()
+    
 #image = cv2.imread("images/fish.jpg")
-#int_image(image)
+#roi(image)
 
 
     
