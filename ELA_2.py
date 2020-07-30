@@ -12,8 +12,6 @@ from PIL import Image, ImageChops
 
 #ORIG = './books-edited.jpg'
 ORIG = "images/SC_jlawsky.jpg"
-
-
 def ELA(ORIG):
     TEMP = 'temp.jpg'
     SCALE = 10

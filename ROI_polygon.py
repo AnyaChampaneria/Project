@@ -9,7 +9,7 @@ import imutils
 import numpy as np
 import joblib
 
-img = 0#cv2.imread("images/fish.jpg")
+img = cv2.imread("images/fish.jpg")
 pts = [] # for storing points
  
  # :mouse callback function
@@ -85,8 +85,8 @@ def roi(img):
 if __name__ == '__roi__':
     roi()
     
-#image = cv2.imread("images/fish.jpg")
-#roi(image)
+image = cv2.imread("images/fish.jpg")
+roi(image)
 
 
     

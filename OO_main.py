@@ -5,16 +5,16 @@ Created on Wed Jul 29 15:25:32 2020
 @author: anyaj
 """
 import detect_blur
-import ROI_polygon
+#import ROI_polygon
 import cv2
-import ELA_2
+import ELA_opencv
 
 
 
-img="images/skyex.jpg"
-img2=cv2.imread(img)
-#ELA_2.ELA(img)
-ROI_polygon.roi(img2)
+#img="images/skyex.jpg"
+img=cv2.imread("images/skyex.jpg")
+ELA_opencv.ELA(img)
+#ROI_polygon.roi(img2)
 #ROI=ROI_polygon.ROI
-#detect_blur.blur(ROI)
+detect_blur.blur(img, img)
 
