@@ -9,10 +9,10 @@ import imutils
 from matplotlib import pyplot as plt
 import detect_blur
  
-img = cv2.imread("images/skyex.jpg")
+img = cv2.imread("images/penguins_trekkers.jpg")
 img = imutils.resize(img, width=500)
  
-roi = cv2.selectROI(windowName="roi", img=img, showCrosshair=False, fromCenter=False)
+roi = cv2.selectROI(windowName="roi", img=img, showCrosshair=True, fromCenter=False)
 x, y, w, h = roi
  
 img2=img.copy()
@@ -24,12 +24,14 @@ cv2.destroyAllWindows()
 ROI=img[y:y+h, x:x+w]
 
 #print(x, x+w, y, y+h)
-cv2.imshow('roi', ROI)
+#cv2.imshow('roi', ROI)
 #cv2.imshow('roi', img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 
 detect_blur.blur(ROI,img)
+
+
 
 

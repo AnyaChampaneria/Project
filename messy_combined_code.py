@@ -28,16 +28,17 @@ def draw_roi(event, x, y, flags, param):
         points = points.reshape((-1, 1, 2))
                  # 
         mask = cv2.polylines(mask, [points], True, (255, 255, 255), 2)
+        global mask2
         mask2 = cv2.fillPoly(mask.copy(), [points], (255, 255, 255)) # for ROI
         #mask3 = cv2.fillPoly(mask.copy(), [points], (0, 255, 0)) # for displaying images on the desktop
 
         #show_image = cv2.addWeighted(src1=img, alpha=0.8, src2=mask3, beta=0.2, gamma=0)
 
-        #cv2.imshow("mask", mask2)
+        cv2.imshow("mask", mask2)
         #cv2.imshow("show_img", show_image)
         global ROI
         ROI = cv2.bitwise_and(mask2, img)
-        cv2.imshow("ROI", ROI)
+        #cv2.imshow("ROI", ROI)
         cv2.waitKey(0)
 
     if len(pts) > 0:
@@ -53,8 +54,9 @@ def draw_roi(event, x, y, flags, param):
     cv2.imshow('image', img2)
 
 
+
  #Create images and windows and bind windows to callback functions
-img = cv2.imread("images/skyex.jpg")
+img = cv2.imread("images/SC_fishandwhale.jpg")
 img = imutils.resize(img, width=500)
 cv2.namedWindow('image')
 cv2.setMouseCallback('image', draw_roi)

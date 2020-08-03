@@ -51,7 +51,7 @@ def blur(ROI, image):
     
         # if the focus measure is less than the supplied threshold,
     	# then the image should be considered "blurry"
-    if fm < 100:
+    if fm < 200:
         text = "Blurry"
     else :
         text = "Not Blurry"
