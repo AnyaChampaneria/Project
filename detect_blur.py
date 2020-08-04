@@ -44,22 +44,28 @@ def variance_of_laplacian(image):
 #ROI = image[(14, 114), (119, 27), (345, 50), (406, 179), (294, 256), (133, 270), (77, 214), (34, 232), (12, 118)]
 #plt.imshow(ROI)
   
-def blur(ROI, image):
-    gray = cv2.cvtColor(ROI, cv2.COLOR_BGR2GRAY)
-    fm = variance_of_laplacian(gray)
-    text = "Not Blurry"
+def blur(dst_roi, src_roi, image):
+    dst_grey = cv2.cvtColor(dst_roi, cv2.COLOR_BGR2GRAY)
+    src_grey = cv2.cvtColor(src_roi, cv2.COLOR_BGR2GRAY)
+    dst_fm = variance_of_laplacian(dst_grey)
+    src_fm = variance_of_laplacian(src_grey)
+    perc_diff_fm=((dst_fm-src_fm)/dst_fm)*100
+    #text = "Not Blurry"
     
         # if the focus measure is less than the supplied threshold,
     	# then the image should be considered "blurry"
-    if fm < 200:
-        text = "Blurry"
+    if src_fm < dst_fm:
+        text = "more"
     else :
-        text = "Not Blurry"
+        perc_diff_fm=-perc_diff_fm
+        text = "less"
     	# show the image
-    cv2.putText(image, "{}: {:.2f}".format(text, fm), (10, 30),
-    cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 3)
-    cv2.imshow("Image",image)
-    cv2.waitKey(0)
+    #cv2.putText(image, "Boundary on original image: {:.0f} \n, Suspected boundary: {:.0f} , {}".format(dst_fm, src_fm, text), (10, 30),
+    #cv2.FONT_HERSHEY_COMPLEX, 0.1, (0, 0, 255), 3, 1)
+    #image = imutils.resize(image, width=500)
+    #cv2.imshow("Image",image)
+    #cv2.waitKey(0)
+    print("Boundary on original image: {:.0f} \nSuspected boundary: {:.0f} \nSuspected boundary is {:.0f}% {} blurry than the boundary on orginal object".format(dst_fm, src_fm, perc_diff_fm, text))
 
 if __name__ == '__blur__': 
      blur()

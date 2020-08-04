@@ -13,10 +13,10 @@ img = cv2.imread("images/fish.jpg")
 pts = [] # for storing points
  
  # :mouse callback function
-def draw_roi(event, x, y, param):
+def draw_roi(event, x, y, flags, param):
     #
         img2 = img.copy()
-        param=param
+        #param=param
         if event == cv2.EVENT_LBUTTONDOWN: # Left click, select point
             pts.append((x, y))  
      
