@@ -10,7 +10,7 @@ from matplotlib import pyplot as plt
 import detect_blur
 import ELA_opencv
  
-img = cv2.imread("images/SC_fieldmen.jpg")
+img = cv2.imread("images/SC-images/online/polarbear.jpg")
 #img = imutils.resize(img, width=500)
 
 ELA_opencv.ELA(img)

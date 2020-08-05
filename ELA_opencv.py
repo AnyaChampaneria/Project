@@ -8,7 +8,7 @@ import cv2
 import numpy as np
 
 # read image
-img1 = cv2.imread("images/SC_fishandwhale.jpg")
+img1 = cv2.imread("images/SC-images/made/SC_fishandwhale.jpg")
 
 def ELA(img1):
 # set compression and scale
