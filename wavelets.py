@@ -19,7 +19,7 @@ def w2d(image, mode='haar', level=1):
     return im_array_h
 
 
-img = cv2.imread("images/SC_fishandwhale.jpg")
+img = cv2.imread("images/SC-images/made/SC_example.jpg")
 quality = 3
 
 b = w2d(img[:, :, 0], 'db1', quality)

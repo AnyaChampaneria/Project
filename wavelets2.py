@@ -32,4 +32,4 @@ def w2d(img, mode='haar', level=1):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-w2d("images/fish.jpg",'db1',7)
+w2d("images/SC-images/made/SC_example.jpg",'db1',7)
