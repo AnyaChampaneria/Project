@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1094</width>
-    <height>824</height>
+    <width>1095</width>
+    <height>828</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="QPushButton" name="Upload">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>150</y>
-      <width>93</width>
-      <height>28</height>
+      <x>690</x>
+      <y>40</y>
+      <width>101</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -30,9 +30,9 @@
    <widget class="QTextEdit" name="image_path_2">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>150</y>
-      <width>271</width>
+      <x>260</x>
+      <y>40</y>
+      <width>431</width>
       <height>31</height>
      </rect>
     </property>
@@ -40,8 +40,8 @@
    <widget class="QLabel" name="image_path">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>150</y>
+      <x>160</x>
+      <y>40</y>
       <width>131</width>
       <height>31</height>
      </rect>
@@ -50,13 +50,61 @@
      <string>Image Path</string>
     </property>
    </widget>
+   <widget class="QLabel" name="image_label">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>70</y>
+      <width>641</width>
+      <height>341</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="ela95_label">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>420</y>
+      <width>501</width>
+      <height>351</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="ela90_label">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>410</y>
+      <width>531</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1094</width>
+     <width>1095</width>
      <height>26</height>
     </rect>
    </property>
