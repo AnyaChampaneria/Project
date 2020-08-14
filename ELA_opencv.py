@@ -7,7 +7,7 @@ Created on Thu Jul 30 13:25:15 2020
 import cv2
 
 # read image
-img1 = cv2.imread("images/SC-images/online/rainbow.jpg")
+img1 = cv2.imread("images/SC-images/made/SC_skyscrapers.jpg")
 
 def ELA(img1):
 # set compression and scale
@@ -41,4 +41,4 @@ def ELA(img1):
 if __name__ == '__ELA__': 
     ELA()
 
-#ELA(img1)
+ELA(img1)

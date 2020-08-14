@@ -11,8 +11,7 @@ from PyQt5.QtGui import *
 from PyQt5 import uic
 import cv2  # Not actually necessary if you just want to create an image.
 import numpy as np
-from ELA_opencv import ELA
-import detect_blur
+import detect_blur as db
 
 Ui_MainWindow, QtBaseClass = uic.loadUiType('gui.ui')
 
@@ -28,11 +27,7 @@ class MyApp(QMainWindow):
     def analyse(self):
         img = QImage(self.ui.image_path_2.toPlainText())
         image = cv2.imread(self.ui.image_path_2.toPlainText())
-        #img.QtGui.QImage(QtGui.QImageReader(img).read())
-        #self.ui.image_label.QImage(img)
-       # image = QtGui.QImage(QtGui.QImageReader(":/images/test.png").read())
         self.ui.image_label.setPixmap(QPixmap(img))
-        #ELA(img)
         
         def ELA(img1):
         # set compression and scale
@@ -65,10 +60,6 @@ class MyApp(QMainWindow):
             global ela90
             cv2.imwrite("images/temps/diff2.jpg", diff2)
             
-            # display it
-            #cv2.imshow("ela95", diff1)
-            #cv2.imshow("ela90", diff2)
-            #cv2.waitKey(0)
             
         if __name__ == '__ELA__': 
             ELA()
@@ -89,22 +80,45 @@ class MyApp(QMainWindow):
 
             if __name__ == '__roi__':
                 roi()
+        
+        def blur(dst_roi, src_roi, image):
+            dst_grey = cv2.cvtColor(dst_roi, cv2.COLOR_BGR2GRAY)
+            src_grey = cv2.cvtColor(src_roi, cv2.COLOR_BGR2GRAY)
+            global dst_fm
+            dst_fm = db.variance_of_laplacian(dst_grey)
+            global src_fm
+            src_fm = db.variance_of_laplacian(src_grey)
+            global perc_diff_fm
+            perc_diff_fm=((dst_fm-src_fm)/dst_fm)*100
+          
+            if src_fm < dst_fm:
+                global text
+                text = "more"
+            else :
+                perc_diff_fm=-perc_diff_fm
+                text = "less"
+
+        
+        if __name__ == '__blur__': 
+             blur()
                 
         ELA(image)
-        #ela95=QImage(diff1)
-        #ela90=QImage(diff2)
         self.ui.ela95_label.setPixmap(QPixmap("images/temps/diff1.jpg"))
         self.ui.ela90_label.setPixmap(QPixmap("images/temps/diff2.jpg"))
                 
         print("Draw a box on a border in the original object in image (try to get half of the object and half the background using the cross-hair as a guide)")
+        QMessageBox.information(self,'Instructions','Draw a box on a border in the original object in image (try to get half of the object and half the background using the cross-hair as a guide)')  
         roi(image)
         dst_roi=ROI
 
         print("Draw a box the same size on a border in the suspected object image (try to get half of the object and half the background using the cross-hair as a guide)")
+        QMessageBox.information(self,'Instructions','Draw a box the same size on a border in the suspected object image  (try to get half of the object and half the background using the cross-hair as a guide)')  
         roi(img2)
         src_roi=ROI
     
-        detect_blur.blur(dst_roi, src_roi, img)
+        blur(dst_roi, src_roi, image)
+        print("Boundary on original image: {:.0f} \nSuspected boundary: {:.0f} \nSuspected boundary is {:.0f}% {} blurry than the boundary on orginal object".format(dst_fm, src_fm, perc_diff_fm, text))
+        QMessageBox.information(self,'Result', 'Boundary on original image: {:.0f} \nSuspected boundary: {:.0f} \nSuspected boundary is {:.0f}% {} blurry than the boundary on orginal object'.format(dst_fm, src_fm, perc_diff_fm, text))
         
 if __name__ == '__main__':
     app = QApplication([])
