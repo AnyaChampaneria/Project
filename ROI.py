@@ -11,7 +11,7 @@ import detect_blur
 import ELA_opencv
 #import PCA3
  
-#img = cv2.imread("images/SC-images/made/SC_plantonwindow.jpg")
+img = cv2.imread("images/SC-images/made/SC_plantonwindow.jpg")
 #img = imutils.resize(img, width=500)
 
 #PCA3.pca(img)
@@ -21,6 +21,7 @@ import ELA_opencv
 
 def roi(img):
     roi = cv2.selectROI(windowName="roi", img=img, showCrosshair=True, fromCenter=False)
+    global x,y,w,h
     x, y, w, h = roi
     global img2
     img2=img.copy()
@@ -43,7 +44,7 @@ if __name__ == '__roi__':
 #print("Draw a box the same size on a border in the suspected object image (try to get half of the object and half the background using the cross-hair as a guide)")
 #roi(img2)
 #src_roi=ROI
-
+ 
 
 #detect_blur.blur(dst_roi, src_roi, img)
 

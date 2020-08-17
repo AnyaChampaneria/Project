@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jul 30 13:25:15 2020
+Created on Mon Aug 17 16:51:09 2020
 
 @author: anyaj
 """
 import cv2
 
 # read image
-img1 = cv2.imread("images/genuine.jpg")
+#img1 = cv2.imread("images/genuine.jpg")
 
 def ELA(img1):
 # set compression and scale
@@ -37,13 +37,9 @@ def ELA(img1):
     # get absolute difference between img1 and img2 and multiply by scale
     diff2 = scale * cv2.absdiff(img2, img3)
     cv2.imwrite("images/temps/diff2.jpg", diff2)
-    # display it
-    #cv2.imshow("ela95", diff1)
-    #cv2.imshow("ela90", diff2)
-   # cv2.waitKey(0)
     
     
 if __name__ == '__ELA__': 
     ELA()
 
-#ELA(img1)
+
