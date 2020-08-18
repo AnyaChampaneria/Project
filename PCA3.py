@@ -11,7 +11,7 @@ import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 
-im = cv2.imread("images/SC-images/made/SC_kayaks2.jpg")
+im = cv2.imread("images/SC-images/genuine/plantpots.jpg")
 
 def pca(im):
     grayscale_image = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
