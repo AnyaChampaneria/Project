@@ -5,9 +5,9 @@ Created on Thu Jul 30 13:25:15 2020
 @author: anyaj
 """
 import cv2
-
+import numpy as np
 # read image
-img1 = cv2.imread("images/SC-images/genuine/skyscrapers.jpg")
+img1 = cv2.imread("images/SC-images/made/SC_skyscrapers.jpg")
 
 def ELA(img1):
 # set compression and scale
@@ -38,12 +38,40 @@ def ELA(img1):
     diff2 = scale * cv2.absdiff(img2, img3)
     cv2.imwrite("images/temps/diff2.jpg", diff2)
     # display it
-    cv2.imshow("ela95", diff1)
-    cv2.imshow("ela90", diff2)
-    cv2.waitKey(0)
+    #cv2.imshow("ela95", diff1)
+    #cv2.imshow("ela90", diff2)
+    #cv2.waitKey(0)
+    
+    #calculate non-black pixels
+    #bw_diff1=cv2.imread("images/temps/diff1.jpg", 0)
+    #blur = cv2.GaussianBlur(bw_diff1, (5,5), 0)
+    #cv2.imshow("ela90", blur)
+    #cv2.waitKey(0)
+    
+    lower_black = np.array([0, 0, 0], np.uint8)
+    upper_black = np.array([20,20,20], np.uint8)
+
+    #bl_img = img[np.all(BLUE_MIN<img<BLUE_MAX)] = (255,255,255)
+    #plt.imshow(bl_img)
+
+    black_mask = cv2.inRange(diff1, lower_black, upper_black)
+    cv2.imwrite("images/temps/ela_mask.jpg", black_mask)
+    #cv2.imshow('mask0', black_mask)
+    #cv2.waitKey(0)
+    #cv2.imshow('mask0',black_mask)
+    #cv2.waitKey(0)
+
+    #dst = cv2.inRange(img, lower_black, upper_black)
+    #non_black = cv.countNonZero(dst)
+    #count = cv2.countNonZero(blur)
+    #print(count)
+    #print(diff1.size)
+
     
     
 if __name__ == '__ELA__': 
     ELA()
 
 #ELA(img1)
+
+

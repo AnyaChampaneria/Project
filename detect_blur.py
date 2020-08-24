@@ -54,18 +54,30 @@ def blur(dst_roi, src_roi, image):
     
         # if the focus measure is less than the supplied threshold,
     	# then the image should be considered "blurry"
-    if src_fm < dst_fm:
-        text = "more"
-    else :
-        perc_diff_fm=-perc_diff_fm
-        text = "less"
+    #if src_fm < dst_fm:
+     #   text = "more"
+    #else :
+     #   perc_diff_fm=-perc_diff_fm
+      #  text = "less"
     	# show the image
     #cv2.putText(image, "Boundary on original image: {:.0f} \n, Suspected boundary: {:.0f} , {}".format(dst_fm, src_fm, text), (10, 30),
     #cv2.FONT_HERSHEY_COMPLEX, 0.1, (0, 0, 255), 3, 1)
     #image = imutils.resize(image, width=500)
     #cv2.imshow("Image",image)
     #cv2.waitKey(0)
-    print("Boundary on original image: {:.0f} \nSuspected boundary: {:.0f} \nSuspected boundary is {:.0f}% {} blurry than the boundary on orginal object".format(dst_fm, src_fm, perc_diff_fm, text))
+    #print("Boundary on original image: {:.0f} \nSuspected boundary: {:.0f} \nSuspected boundary is {:.0f}% {} blurry than the boundary on orginal object".format(dst_fm, src_fm, perc_diff_fm, text))
+
+    if perc_diff_fm<20:
+        text = "{:.0f}% - GREEN: Percentage difference is not large enough to suggest cloning".format(perc_diff_fm)
+    
+    elif 20<perc_diff_fm<100:
+        text = "{:.0f}% - AMBER: Percentage difference is large enough to cause concern, needs human check".format(perc_diff_fm)
+
+
+    elif perc_diff_fm>100:
+        text = "{:.0f}% -RED: Percentage difference is very large, likely to to be fake"
+    
+    print(text)
 
 if __name__ == '__blur__': 
      blur()

@@ -10,6 +10,7 @@ from sklearn.decomposition import PCA
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
+from detect_blur import variance_of_laplacian
 
 im = cv2.imread("images/SC-images/genuine/plantpots.jpg")
 
@@ -43,6 +44,9 @@ def pca(im):
     f.add_subplot(1,2, 2)
     plt.axis("off")
     plt.imshow(np.rot90(final2,0), cmap="gray")
+    
+    fm=variance_of_laplacian(final1)
+    
     
     #cv2.imshow('img',f)
     #f.add_subplot(1,3, 3)

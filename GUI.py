@@ -29,6 +29,7 @@ class MyApp(QMainWindow):
         self.ui.ela_button.clicked.connect(self.ela)
         self.ui.pca_button.clicked.connect(self.pca)
         self.ui.bd_button.clicked.connect(self.bd) 
+        self.ui.clear_all.clicked.connect(self.clear_all)
         
     def upload(self):
         global img        
@@ -41,8 +42,8 @@ class MyApp(QMainWindow):
             
     def ela(self):
         ELA(image)
-        self.ui.ela_image.setPixmap(QPixmap("images/temps/diff1.jpg"))
-        self.ui.ela_image_2.setPixmap(QPixmap("images/temps/diff2.jpg")) 
+        self.ui.ela_image.setPixmap(QPixmap("images/temps/diff2.jpg"))
+        self.ui.ela_image_2.setPixmap(QPixmap("images/temps/ela_mask.jpg")) 
 
     def pca(self):
         pca(image)
@@ -98,22 +99,33 @@ class MyApp(QMainWindow):
             global perc_diff_fm
             perc_diff_fm=((dst_fm-src_fm)/dst_fm)*100
                   
-            if src_fm < dst_fm:
-                global text
-                text = "more"
-            else :
-                perc_diff_fm=-perc_diff_fm
-                text = "less"
-        
+            if perc_diff_fm<20:
+                text = "{:.0f}% - GREEN \nPercentage difference is not large enough to suggest cloning".format(perc_diff_fm)
+    
+            elif 20<perc_diff_fm<100:
+                text = "{:.0f}% - AMBER \nPercentage difference is large enough to cause concern, \nneeds human check".format(perc_diff_fm)
+
+
+            elif perc_diff_fm>100:
+                text = "{:.0f}% -RED \nPercentage difference is very large, \nlikely to to be fake".format(perc_diff_fm)
+    
+            #print(text)
+            self.ui.bd_results.setText(text)
                 
-        if __name__ == '__blur__': 
-            blur()
-                    
+            if __name__ == '__blur__': 
+                blur()    
         
         blur(dst_roi, src_roi, image)
-        print("Boundary on original image: {:.0f} \nSuspected boundary: {:.0f} \nSuspected boundary is {:.0f}% {} blurry than the boundary on orginal object".format(dst_fm, src_fm, perc_diff_fm, text))
         
-        self.ui.bd_results.setText('Boundary on original image: {:.0f} \nSuspected boundary: {:.0f} \nSuspected boundary is {:.0f}% {} blurry than the boundary \non orginal object'.format(dst_fm, src_fm, perc_diff_fm, text))
+        #print("Boundary on original image: {:.0f} \nSuspected boundary: {:.0f} \nSuspected boundary is {:.0f}% {} blurry than the boundary on orginal object".format(dst_fm, src_fm, perc_diff_fm, text))
+    
+    def clear_all(self):
+        self.ui.image_label.clear()
+        self.ui.ela_image.clear()
+        self.ui.ela_image_2.clear()
+        self.ui.pca_image.clear()
+        self.ui.pca_image_2.clear()
+        self.ui.bd_image.clear()
 
 
         

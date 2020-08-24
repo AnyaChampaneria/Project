@@ -8,10 +8,10 @@ import cv2
 #import imutils
 #from matplotlib import pyplot as plt
 import detect_blur
-import ELA_opencv
+#import ELA_opencv
 #import PCA3
  
-img = cv2.imread("images/SC-images/made/SC_plantonwindow.jpg")
+img = cv2.imread("images/SC-images/made/SC_fullenglish.jpg")
 #img = imutils.resize(img, width=500)
 
 #PCA3.pca(img)

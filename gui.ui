@@ -288,6 +288,19 @@
      <string>PLEASE NOTE: This may take a a few moments to load</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="clear_all">
+    <property name="geometry">
+     <rect>
+      <x>1530</x>
+      <y>610</y>
+      <width>171</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Clear All</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
