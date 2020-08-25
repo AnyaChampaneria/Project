@@ -4,7 +4,6 @@ Created on Wed Aug 12 12:43:11 2020
 
 @author: anyaj
 """
-
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
