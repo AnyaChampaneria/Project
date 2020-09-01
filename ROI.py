@@ -5,19 +5,9 @@ Created on Tue Jul 14 14:28:09 2020
 @author: anyaj
 """
 import cv2
-#import imutils
-#from matplotlib import pyplot as plt
 import detect_blur
-#import ELA_opencv
-#import PCA3
  
 img = cv2.imread("images/SC-images/made/SC_fullenglish.jpg")
-#img = imutils.resize(img, width=500)
-
-#PCA3.pca(img)
-#ELA_opencv.ELA(img)
-
-
 
 def roi(img):
     roi = cv2.selectROI(windowName="roi", img=img, showCrosshair=True, fromCenter=False)
@@ -37,6 +27,9 @@ def roi(img):
 if __name__ == '__roi__':
     roi()
 
+
+
+#option to run programme with blur
 #print("Draw a box on a border in the original object in image (try to get half of the object and half the background using the cross-hair as a guide)")
 #roi(img)
 #dst_roi=ROI
@@ -45,7 +38,6 @@ if __name__ == '__roi__':
 #roi(img2)
 #src_roi=ROI
  
-
 #detect_blur.blur(dst_roi, src_roi, img)
 
 

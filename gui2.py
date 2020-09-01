@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Aug 12 12:43:11 2020
+Created on Thu Aug 27 12:12:56 2020
 
 @author: anyaj
 """
@@ -11,9 +11,8 @@ from PyQt5 import uic
 import cv2  # Not actually necessary if you just want to create an image.
 import detect_blur as db
 from ELA_opencv import ELA
-from PCA3 import pca
 
-Ui_MainWindow, QtBaseClass = uic.loadUiType('gui.ui')
+Ui_MainWindow, QtBaseClass = uic.loadUiType('gui2.ui')
 
 class MyApp(QMainWindow):
     def __init__(self, parent=None, name=None):
@@ -24,9 +23,9 @@ class MyApp(QMainWindow):
         self.ui.setupUi(self)
         self.ui.upload_button.clicked.connect(self.upload)
         self.ui.ela_button.clicked.connect(self.ela)
-        self.ui.pca_button.clicked.connect(self.pca)
         self.ui.bd_button.clicked.connect(self.bd) 
         self.ui.clear_all.clicked.connect(self.clear_all)
+                                   
         
     def upload(self):
         global img        
@@ -40,12 +39,6 @@ class MyApp(QMainWindow):
         ELA(image)
         self.ui.ela_image.setPixmap(QPixmap("images/temps/diff2.jpg"))
         self.ui.ela_image_2.setPixmap(QPixmap("images/temps/ela_mask.jpg")) 
-
-    def pca(self):
-        pca(image)
-        self.ui.pca_image.setPixmap(QPixmap("images/temps/final1.jpg")) 
-        self.ui.pca_image_2.setPixmap(QPixmap("images/temps/final2.jpg")) 
-             
             
     def bd(self):   
         
@@ -67,14 +60,20 @@ class MyApp(QMainWindow):
         if __name__ == '__roi__':
             roi()
         
-        print("Draw a box on a border in the original object in image (try to get half of the object and half the background using the cross-hair as a guide)")
-        QMessageBox.information(self,'Instructions','Draw a box on a border in the original object in image (try to get half of the object and half the background using the cross-hair as a guide)')  
+        print("Draw a box on a border in the original object in image "
+              "(try to get half of the object and half the background using the cross-hair as a guide)")
+        QMessageBox.information(self,'Instructions',
+                            'Draw a box on a border in the original object in image '
+                          '(try to get half of the object and half the background using the cross-hair as a guide)')  
         roi(image)
         global dst_roi
         dst_roi=ROI
         
-        print("Draw a box the same size on a border in the suspected object image (try to get half of the object and half the background using the cross-hair as a guide)")
-        QMessageBox.information(self,'Instructions','Draw a box the same size on a border in the suspected object image  (try to get half of the object and half the background using the cross-hair as a guide)')  
+        print("Draw a box the same size on a border in the suspected object image"
+              " (try to get half of the object and half the background using the cross-hair as a guide)")
+        QMessageBox.information(self,'Instructions',
+                                'Draw a box the same size on a border in the suspected object image  '
+                        '(try to get half of the object and half the background using the cross-hair as a guide)')  
         roi(img2)
         global src_roi
         src_roi=ROI
@@ -96,14 +95,17 @@ class MyApp(QMainWindow):
             perc_diff_fm=((dst_fm-src_fm)/dst_fm)*100
                   
             if perc_diff_fm<20:
-                text = "{:.0f}% - GREEN \nPercentage difference is not large enough to suggest cloning".format(perc_diff_fm)
+                text = "{:.0f}% - GREEN ".format(perc_diff_fm)
+                "\nPercentage difference is not large enough to suggest cloning"
     
             elif 20<perc_diff_fm<100:
-                text = "{:.0f}% - AMBER \nPercentage difference is large enough to cause concern, \npossible cloning present".format(perc_diff_fm)
+                text = "{:.0f}% - AMBER ".format(perc_diff_fm)
+                "\nPercentage difference is large enough to cause concern, \npossible cloning present"
 
 
             elif perc_diff_fm>100:
-                text = "{:.0f}% -RED \nPercentage difference is very large, \nit is likely there is cloning in this image".format(perc_diff_fm)
+                text = "{:.0f}% -RED "
+                "\nPercentage difference is very large, \nit is likely there is cloning in this image".format(perc_diff_fm)
     
             #print(text)
             self.ui.bd_results.setText(text)
@@ -112,16 +114,14 @@ class MyApp(QMainWindow):
                 blur()    
         
         blur(dst_roi, src_roi, image)
-        
-        #print("Boundary on original image: {:.0f} \nSuspected boundary: {:.0f} \nSuspected boundary is {:.0f}% {} blurry than the boundary on orginal object".format(dst_fm, src_fm, perc_diff_fm, text))
+    
     
     def clear_all(self):
         self.ui.image_label.clear()
         self.ui.ela_image.clear()
         self.ui.ela_image_2.clear()
-        self.ui.pca_image.clear()
-        self.ui.pca_image_2.clear()
         self.ui.bd_image.clear()
+        self.ui.bd_results.clear()
 
 
         
@@ -130,4 +130,7 @@ if __name__ == '__main__':
     window = MyApp()
     window.show()
     sys.exit(app.exec_())
+
+
+
 

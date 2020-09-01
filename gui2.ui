@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1879</width>
+    <width>1909</width>
     <height>967</height>
    </rect>
   </property>
@@ -17,7 +17,7 @@
    <widget class="QPushButton" name="upload_button">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>450</x>
       <y>30</y>
       <width>91</width>
       <height>31</height>
@@ -32,7 +32,7 @@
      <rect>
       <x>100</x>
       <y>30</y>
-      <width>261</width>
+      <width>351</width>
       <height>31</height>
      </rect>
     </property>
@@ -55,8 +55,8 @@
      <rect>
       <x>20</x>
       <y>70</y>
-      <width>431</width>
-      <height>311</height>
+      <width>561</width>
+      <height>381</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -72,17 +72,17 @@
    <widget class="QLabel" name="ela_image">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>70</y>
-      <width>411</width>
-      <height>281</height>
+      <x>620</x>
+      <y>100</y>
+      <width>631</width>
+      <height>351</height>
      </rect>
     </property>
     <property name="frameShape">
      <enum>QFrame::Box</enum>
     </property>
     <property name="text">
-     <string>ELA at 95% will be presented here</string>
+     <string/>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -94,7 +94,7 @@
    <widget class="QPushButton" name="ela_button">
     <property name="geometry">
      <rect>
-      <x>820</x>
+      <x>860</x>
       <y>30</y>
       <width>131</width>
       <height>28</height>
@@ -104,23 +104,10 @@
      <string>Press for ELA</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pca_button">
-    <property name="geometry">
-     <rect>
-      <x>840</x>
-      <y>440</y>
-      <width>121</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Press for PCA</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="bd_button">
     <property name="geometry">
      <rect>
-      <x>1520</x>
+      <x>1490</x>
       <y>30</y>
       <width>191</width>
       <height>28</height>
@@ -130,61 +117,13 @@
      <string>Press for Blur Detection</string>
     </property>
    </widget>
-   <widget class="QLabel" name="pca_image">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>530</y>
-      <width>411</width>
-      <height>281</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Box</enum>
-    </property>
-    <property name="text">
-     <string>PCA at 80% will be presented here</string>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="plainTextEdit">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>350</y>
-      <width>821</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="plainText">
-     <string>Areas which show different colouring to the rest of the image suggest a suspicious and potentially fake area. Objects will be highlighted, but some may have different colouring, implying difference ELA values.</string>
-    </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="plainTextEdit_2">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>810</y>
-      <width>821</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="plainText">
-     <string>Areas which are more 'blocky' or are less defined than other areas in the image suggest potential fakeness</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="bd_image">
     <property name="geometry">
      <rect>
-      <x>1380</x>
+      <x>1290</x>
       <y>70</y>
-      <width>471</width>
-      <height>281</height>
+      <width>581</width>
+      <height>381</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -203,10 +142,10 @@
    <widget class="QLabel" name="bd_results">
     <property name="geometry">
      <rect>
-      <x>1380</x>
-      <y>350</y>
-      <width>471</width>
-      <height>91</height>
+      <x>1290</x>
+      <y>450</y>
+      <width>581</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="layoutDirection">
@@ -231,68 +170,30 @@
    <widget class="QLabel" name="ela_image_2">
     <property name="geometry">
      <rect>
-      <x>900</x>
-      <y>70</y>
-      <width>411</width>
-      <height>281</height>
+      <x>620</x>
+      <y>500</y>
+      <width>631</width>
+      <height>351</height>
      </rect>
     </property>
     <property name="frameShape">
      <enum>QFrame::Box</enum>
     </property>
     <property name="text">
-     <string>ELA at 90% will be presented here</string>
+     <string/>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="pca_image_2">
-    <property name="geometry">
-     <rect>
-      <x>900</x>
-      <y>530</y>
-      <width>411</width>
-      <height>281</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Box</enum>
-    </property>
-    <property name="text">
-     <string>PCA at 90% will be presented here</string>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="PCA_warning">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>490</y>
-      <width>821</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::LeftToRight</enum>
-    </property>
-    <property name="plainText">
-     <string>PLEASE NOTE: This may take a a few moments to load</string>
     </property>
    </widget>
    <widget class="QPushButton" name="clear_all">
     <property name="geometry">
      <rect>
-      <x>1530</x>
-      <y>610</y>
+      <x>180</x>
+      <y>580</y>
       <width>171</width>
       <height>61</height>
      </rect>
@@ -301,13 +202,47 @@
      <string>Clear All</string>
     </property>
    </widget>
+   <widget class="QTextEdit" name="ela_text_1">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>70</y>
+      <width>631</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:9.6pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Areas which show different colouring or intensity suggest potential foreign objects&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="ela_text_2">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>470</y>
+      <width>631</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:9.6pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Clusters with more black pixels suggest potential foreign objects&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1879</width>
+     <width>1909</width>
      <height>26</height>
     </rect>
    </property>

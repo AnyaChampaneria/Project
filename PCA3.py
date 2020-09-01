@@ -10,9 +10,8 @@ from sklearn.decomposition import PCA
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
-from detect_blur import variance_of_laplacian
 
-im = cv2.imread("images/SC-images/genuine/plantpots.jpg")
+im = cv2.imread("images/SC-images/made/SC_birdsonbranch.jpg")
 
 def pca(im):
     grayscale_image = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
@@ -20,23 +19,23 @@ def pca(im):
     patches = image.extract_patches_2d(grayscale_image, (25, 25), random_state = 42)
     # reshape patches into compatible size array
     patches_reshaped = patches.reshape(patches.shape[0],-1)
-    #apply PCA
+    
+    #apply PCA at 80%
     pca1 = PCA(.80)
     projected = pca1.fit_transform(patches_reshaped.data)
     denoised_image = pca1.inverse_transform(projected)
+    #reconstruct image
     final1=image.reconstruct_from_patches_2d(denoised_image.reshape(-1,25,25), grayscale_image.shape)
     cv2.imwrite("images/temps/final1.jpg", final1)
- 
+   
+    #apply PCA at 90%
     pca2 = PCA(.90)
     projected = pca2.fit_transform(patches_reshaped.data)
     denoised_image = pca2.inverse_transform(projected)
     final2=image.reconstruct_from_patches_2d(denoised_image.reshape(-1,25,25), grayscale_image.shape)
     cv2.imwrite("images/temps/final2.jpg", final2)
-    #pca3 = PCA(.90)
-    #projected = pca3.fit_transform(patches_reshaped.data)
-    #denoised_image = pca3.inverse_transform(projected)
-    #final3=image.reconstruct_from_patches_2d(denoised_image.reshape(-1,25,25),grayscale_image.shape)
-
+   
+    #options to plot on axis 
     f = plt.figure()
     f.add_subplot(1,2, 1)
     plt.axis("off")
@@ -44,19 +43,11 @@ def pca(im):
     f.add_subplot(1,2, 2)
     plt.axis("off")
     plt.imshow(np.rot90(final2,0), cmap="gray")
-    
-    fm=variance_of_laplacian(final1)
-    
-    
-    #cv2.imshow('img',f)
-    #f.add_subplot(1,3, 3)
-    #plt.axis("off")
-   # plt.imshow(np.rot90(final3,0), cmap="gray")
-    #plt.show(block=True)
+
 
 if __name__ == '__pca__': 
     pca()
 
-#pca(im)
+pca(im)
 
 
