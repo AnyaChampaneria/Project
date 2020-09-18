@@ -7,7 +7,7 @@ Created on Thu Jul 30 13:25:15 2020
 import cv2
 import numpy as np
 # read image
-img1 = cv2.imread("images/SC-images/made/SC_fieldmen.jpg")
+#img1 = cv2.imread("dataset/dataset/23.jpg")
 
 def ELA(img1):
 # set compression and scale
